@@ -24,7 +24,7 @@ To create a new integration in Slack:
 1. Click the team/user header in the top left corner, and select *Apps &
    integrations* from the dropdown menu.
 
-   ![Picking Apps & integrations from the dropdown menu](readme-resources/app-integration-menu.png "Apps & integrations menu")
+   ![Selecting Apps & integrations from the dropdown menu](readme-resources/app-integration-menu.png "Apps & integrations menu")
 1. Click the *Build* menu option in the top right corner.
    
    ![Clicking the Build menu option](readme-resources/build-integration-menu.png "Build menu option")
@@ -41,11 +41,35 @@ To create a new integration in Slack:
 1. You will be taken to the *Integration Settings* page.
 
    1. Copy the *API Token* someplace (you'll need it later).
-   1. Optional: Upload the [aws-cube.png] image provided in this GitHub
-      repository as the bot's icon under *Customize Icon*.
-   1. Optional: Enter *First & Last Name* for the bot.
-   1. Optional: Enter a description of the bot under *What this bot does*.
+      
+      ![Copying the API Token](readme-resources/copy-api-token.png "API Token")
+   1. Optional: Upload the [aws-cube.png](aws-cube.png) image provided in this
+      GitHub repository as the bot's icon under *Customize Icon*.
 
+      ![Uploading image to Customize Icon](readme-resources/customize-icon.png "Customize Icon")
+   1. Optional: Enter *First & Last Name* for the bot, whatever you'd like.
+      
+      ![Entering First & Last Name](readme-resources/enter-first-last-name.png "First & Last Name")
+   1. Optional: Enter a description of the bot under *What this bot does*.
+      
+      ![Entering description in What this bot does](readme-resources/enter-description.png "What this bot does")
+   1. Click the *Save Integration* button.
+      
+      ![Clicking the Save Integration button](readme-resources/save-integration-button.png "Save Integration")
+   
+1. Back in main Slack interface, go into the channel to which you want the bot
+   to post messages. Click the *Channel Settings* (gear) button, then select
+   *Invite team members to join...* from the dropdown menu.
+
+   ![Selecting Invite team members to join from the dropdown menu](readme-resources/invite-team-member-menu.png "Invite team members to join menu")
+1. You will be taken to the *Invite others* page.
+   
+   1. *Search* for your bot using the username you chose for it. Click the bot's
+      entry to select the bot, then click the *Invite* button.
+      
+      ![Inviting the bot to a channel](readme-resources/invite-bot.png "Invite bot")
+
+You've completed set up of the bot on the Slack side of things!
 ## Usage
 
 TODO: Write usage instructions
