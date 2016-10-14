@@ -146,10 +146,11 @@ without any extra spaces or newlines. You can edit `ACCOUNT` similarly--it's
 just a friendly name that shows up in Slack messages (examples: *Kim Smith*
 did..., or *Development* did...). If you want to put some kind of symbol between
 the double quotes, like a backslash (`\`) or a double quote (`"`), it gets more
-complicated and your best bet is to find a developer to help you. :-) Editing
-`INTERESTING_INSTANCE_TYPES` is easy: Each instance type needs to be between
-double quotes, with a comma at the end, like `"t2.micro",`. You can add as many
-as you like. You can delete any existing lines with instance types you don't want.
+complicated and your best bet is to find a developer to help you. :smiley:
+Editing `INTERESTING_INSTANCE_TYPES` is easy: Each instance type needs to be
+between double quotes, with a comma at the end, like `"t2.micro",`. You can add
+as many as you like. You can delete any existing lines with instance types you
+don't want.
 
 When you're done editing, click the *Save* button.
 
