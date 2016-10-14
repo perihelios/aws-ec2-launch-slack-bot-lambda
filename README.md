@@ -69,7 +69,90 @@ To create a new integration in Slack:
       
       ![Inviting the bot to a channel](readme-resources/invite-bot.png "Invite bot")
 
-You've completed set up of the bot on the Slack side of things!
+Great! You've completed setup of the bot on the Slack side!
+
+### Create AWS Lambda
+Code for the AWS Lambda is contained entirely in the [index.js](index.js) file
+in this repository. These steps will walk you through creating a Lambda in the
+AWS Console (Web interface).
+
+#### Create AWS Lambda execution role
+**Note:** The Lambda needs to be able to describe EC2 instances, in addition to
+having the default Lambda permissions (which allow the Lambda to log to
+CloudWatch). If you already have a role that is appropriate for this, skip these
+steps to create a role and move on to [Create Lambda](#create-lambda).
+
+#### Create Lambda
+
+1. Log in to the [AWS Console](https://console.aws.amazon.com/) under your
+   account and go to the *Lambda* service.
+   
+1. Click the *Create a Lambda function* button.
+   
+1. On the *Select blueprint* page, click on the *Blank Function* heading.
+   
+   ![Entering a bot Username](readme-resources/select-lambda.png "Bot Username")
+   
+1. On the *Configure triggers* page, just click the *Next* button.
+   
+1. On the *Configure function* page:
+   
+   1. Enter a *Name* for the function, like *aws-ec2-launch-slack-bot-lambda*,
+      or whatever you like.
+   
+   1. Optional: Enter a *Description* of the function. Using the URL of this
+      GitHub repository might be handy, since that will enable anyone
+     maintaining the Lambda to easily reach this documentation.
+   
+   1. Select *NodeJS 4.3* (or a later version, if available) in the *Runtime*
+      dropdown.
+   
+   1. Ensure *Edit code inline* is selected in the *Code entry type* dropdown.
+   
+   1. Paste the content of [index.js][index.js] in this repository into the
+      code editor.
+   
+   1. Ensure *index.handler* is entered for *Handler*.
+   
+   1. Select *Choose an existing role* in the *Role* dropdown, and select the
+      role you created in
+      [Create AWS Lambda execution role](#create-aws-lambda-execution-role) (or
+	  whatever role you decided to use if you skipped that section) in the
+	  *Existing role* dropdown.
+
+   1. Ensure *Memory (MB)* is set to *128*.
+
+   1. Enter *0 min*, *20 sec* for *Timeout*.
+
+   1. Select *No VPC* in the *VPC* dropdown.
+
+   1. Click the *Next* button.
+
+1. On the *Review* page, review your settings, then click the *Create
+   function* button.
+
+#### Edit Lambda code to add settings
+At a minimum, you need to set the `API_TOKEN` and `AWS_ACCOUNT` settings, and
+ensure `CHANNEL` is set to the Slack channel to which you added your bot user
+back in [Create Slack integration](#create-slack-integration). You can also add
+or remove values in `INTERESTING_INSTANCE_TYPES` to change which types of EC2
+instances will cause messages to be posted to Slack--only the types listed in
+this setting will cause messages to be posted.
+
+If you're a JavaScript developer, tinkering with this will be a cinch. If you're
+not a developer, you can still do it! Just be careful to paste the Slack API
+token between the two double quotes (`"` and `"`) following `API_TOKEN = `,
+without any extra spaces or newlines. You can edit `ACCOUNT` similarly--it's
+just a friendly name that shows up in Slack messages (examples: *Kim Smith*
+did..., or *Development* did...). If you want to put some kind of symbol between
+the double quotes, like a backslash (`\`) or a double quote (`"`), it gets more
+complicated and your best bet is to find a developer to help you. :-) Editing
+`INTERESTING_INSTANCE_TYPES` is easy: Each instance type needs to be between
+double quotes, with a comma at the end, like `"t2.micro",`. You can add as many
+as you like. You can delete any existing lines with instance types you don't want.
+
+When you're done editing, click the *Save* button.
+
 ## Usage
 
 TODO: Write usage instructions
